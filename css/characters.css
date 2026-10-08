@@ -1,0 +1,536 @@
+/* =============================================
+   CARTOON CHARACTERS — CINEMATIC VERSION
+   Thick outlines, neon glow on dark bg
+   ============================================= */
+
+.person {
+    position: absolute !important;
+    display: block !important;
+    width: 100px !important;
+    height: 200px !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    flex-direction: unset !important;
+    align-items: unset !important;
+}
+
+.person > .head, .person > .body { display: none !important; }
+
+/* ─── Role Tag ─── */
+.c-role-tag {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 30;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+/* ─── Shadow ─── */
+.c-shadow {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 55px; height: 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    filter: blur(6px);
+    z-index: 0;
+}
+
+/* ─── Character Root ─── */
+.c-character {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+}
+
+/* ─── HEAD ─── */
+.c-head {
+    position: relative;
+    width: 68px; height: 72px;
+    background: #FFCBA4;
+    border-radius: 36px 36px 28px 28px;
+    border: 3.5px solid #1a0a00;
+    box-shadow:
+        3px 5px 0 #1a0a00,
+        inset -4px -6px 10px rgba(0,0,0,0.15),
+        inset 3px 3px 8px rgba(255,255,255,0.3);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+/* ─── Hair ─── */
+.c-hair {
+    position: absolute;
+    top: -9px; left: -5px;
+    width: 74px; height: 38px;
+    background: #2d1b0e;
+    border-radius: 37px 37px 10px 10px;
+    border: 3.5px solid #1a0a00;
+    z-index: 11;
+}
+
+.c-hair::before {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 8px;
+    width: 52px; height: 12px;
+    background: #2d1b0e;
+    border-radius: 0 0 8px 8px;
+}
+
+/* ─── Face ─── */
+.c-face {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 12;
+}
+
+/* Eyebrows */
+.c-eyebrow {
+    position: absolute;
+    top: 25px;
+    width: 13px; height: 4px;
+    background: #2d1b0e;
+    border-radius: 3px;
+    transition: transform 0.4s ease;
+}
+
+.c-eyebrow.c-left  { left: 12px;  transform: rotate(8deg); }
+.c-eyebrow.c-right { right: 12px; transform: rotate(-8deg); }
+
+/* Eyes */
+.c-eye {
+    position: absolute;
+    top: 32px;
+    width: 15px; height: 19px;
+    background: white;
+    border-radius: 50%;
+    border: 3px solid #1a0a00;
+    overflow: hidden;
+}
+
+.c-eye.c-left  { left: 11px; }
+.c-eye.c-right { right: 11px; }
+
+.c-pupil {
+    position: absolute;
+    bottom: 1px; left: 2px;
+    width: 10px; height: 12px;
+    background: #1a0a00;
+    border-radius: 50%;
+    animation: eyeBlink 5s infinite;
+}
+
+@keyframes eyeBlink {
+    0%,90%,100% { transform: scaleY(1); }
+    95%          { transform: scaleY(0.1); }
+}
+
+.c-pupil::after {
+    content: '';
+    position: absolute;
+    top: 1px; right: 1px;
+    width: 4px; height: 4px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Cheeks */
+.c-face::before, .c-face::after {
+    content: '';
+    position: absolute;
+    top: 48px;
+    width: 14px; height: 8px;
+    background: rgba(255,100,80,0.28);
+    border-radius: 50%;
+}
+.c-face::before { left: 5px; }
+.c-face::after  { right: 5px; }
+
+/* Nose */
+.c-nose {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    width: 7px; height: 5px;
+    background: rgba(180,80,50,0.2);
+    border-radius: 50%;
+}
+
+/* Smile */
+.c-mouth {
+    position: absolute;
+    bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 24px; height: 11px;
+    border-bottom: 3.5px solid #9b2c18;
+    border-left: 2px solid #9b2c18;
+    border-right: 2px solid #9b2c18;
+    border-radius: 0 0 16px 16px;
+    background: transparent;
+    transition: border-radius 0.3s ease;
+}
+
+/* ─── Body Wrap ─── */
+.c-body-wrap {
+    position: relative;
+    width: 80px; height: 76px;
+    margin-top: -8px;
+    flex-shrink: 0;
+}
+
+/* Torso */
+.c-torso {
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    width: 54px; height: 76px;
+    background: #1565c0;
+    border-radius: 22px 22px 14px 14px;
+    border: 3.5px solid #1a0a00;
+    box-shadow:
+        3px 5px 0 #1a0a00,
+        inset -4px -5px 10px rgba(0,0,0,0.2),
+        inset 3px 3px 8px rgba(255,255,255,0.15);
+    z-index: 6;
+}
+
+/* Arms */
+.c-arm {
+    position: absolute;
+    top: 5px;
+    width: 16px; height: 54px;
+    background: #1565c0;
+    border-radius: 8px;
+    border: 3px solid #1a0a00;
+    transform-origin: top center;
+    z-index: 5;
+    box-shadow: 2px 3px 0 #1a0a00;
+}
+
+.c-arm.c-left-arm  { left: 2px; }
+.c-arm.c-right-arm { right: 2px; }
+
+/* Hands */
+.c-hand {
+    position: absolute;
+    bottom: -11px; left: 50%;
+    transform: translateX(-50%);
+    width: 19px; height: 19px;
+    background: #FFCBA4;
+    border-radius: 50%;
+    border: 3px solid #1a0a00;
+    box-shadow: 2px 2px 0 #1a0a00;
+}
+
+/* Legs */
+.c-legs {
+    position: relative;
+    width: 52px; height: 58px;
+    margin-top: -8px;
+    flex-shrink: 0;
+}
+
+.c-leg {
+    position: absolute;
+    top: 0;
+    width: 18px; height: 58px;
+    background: #263238;
+    border-radius: 0 0 8px 8px;
+    border: 3px solid #1a0a00;
+    transform-origin: top center;
+    box-shadow: 2px 3px 0 #1a0a00;
+}
+
+.c-leg.c-left-leg  { left: 5px; }
+.c-leg.c-right-leg { right: 5px; }
+
+/* Shoes */
+.c-shoe {
+    position: absolute;
+    bottom: -7px; left: -8px;
+    width: 30px; height: 14px;
+    background: #111827;
+    border-radius: 6px 14px 6px 6px;
+    border: 3px solid #1a0a00;
+    box-shadow: 2px 2px 0 #1a0a00;
+}
+
+/* File held */
+.c-item-hold {
+    position: absolute;
+    bottom: -14px; right: -12px;
+    width: 26px; height: 34px;
+    background: #fffde7;
+    border: 3px solid #1a0a00;
+    border-radius: 4px;
+    display: none;
+    transform: rotate(10deg);
+    z-index: 12;
+    box-shadow: 3px 3px 0 #1a0a00;
+}
+
+.c-character.has-file .c-item-hold { display: block; }
+
+/* ─── ROLES ─── */
+
+/* Doctor — white coat, glowing stethoscope */
+.c-character.doctor .c-torso { background: #f0f4ff; border-color: #1a0a00; }
+.c-character.doctor .c-arm   { background: #f0f4ff; }
+.c-character.doctor .c-leg   { background: #546e7a; }
+.c-character.doctor .c-hair  { background: #4a3728; }
+
+.c-character.doctor .c-torso::after {
+    content: '🩺';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+}
+
+/* Patient — teal suit */
+.c-character.patient .c-torso { background: #00c97a; border-color: #004d35; }
+.c-character.patient .c-arm   { background: #00c97a; }
+.c-character.patient .c-leg   { background: #004d35; }
+.c-character.patient .c-hair  { background: #5d3a1a; }
+
+/* Nurse — pink uniform + white cap */
+.c-character.nurse .c-torso { background: #ec4899; border-color: #7c2145; }
+.c-character.nurse .c-arm   { background: #ec4899; }
+.c-character.nurse .c-leg   { background: #fff; border-color: #d4a0b0; }
+.c-character.nurse .c-hair  { background: #c25a14; }
+
+.c-character.nurse .c-hair::after {
+    content: '';
+    position: absolute;
+    top: -7px; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 12px;
+    background: white;
+    border: 3px solid #1a0a00;
+    border-radius: 4px 4px 0 0;
+}
+
+.c-character.nurse .c-torso::after {
+    content: '+';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+}
+
+/* Admin — dark blue suit + red tie */
+.c-character.admin .c-torso { background: #1a237e; }
+.c-character.admin .c-arm   { background: #1a237e; }
+.c-character.admin .c-leg   { background: #0d0d2b; }
+.c-character.admin .c-hair  { background: #111827; }
+
+.c-character.admin .c-torso::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 28px;
+    background: #ef4444;
+    border-radius: 0 0 4px 4px;
+    border: 2px solid #1a0a00;
+}
+
+/* Receptionist — default (blue) with glasses */
+.c-character:not(.doctor):not(.nurse):not(.patient):not(.admin) .c-face::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 8px;
+    width: 22px; height: 12px;
+    border: 2px solid #1a0a00;
+    border-radius: 5px;
+    background: transparent;
+    box-shadow: 22px 0 0 0 #1a0a00;
+}
+
+/* ─── ANIMATION STATES ─── */
+
+/* Idle — gentle breathing */
+.anim-idle .c-character {
+    animation: breathe 3s infinite ease-in-out;
+}
+
+@keyframes breathe {
+    0%,100% { transform: translateX(-50%) scaleY(1) scaleX(1); }
+    50%      { transform: translateX(-50%) scaleY(1.02) scaleX(0.99); }
+}
+
+/* Walking — bouncy legs */
+.anim-walking .c-character {
+    animation: bodyBob 0.45s infinite ease-in-out;
+}
+
+.anim-walking .c-leg.c-left-leg {
+    animation: legSwingL 0.45s infinite ease-in-out;
+}
+
+.anim-walking .c-leg.c-right-leg {
+    animation: legSwingR 0.45s infinite ease-in-out;
+}
+
+.anim-walking .c-arm.c-left-arm {
+    animation: armSwingR 0.45s infinite ease-in-out;
+}
+
+.anim-walking .c-arm.c-right-arm {
+    animation: armSwingL 0.45s infinite ease-in-out;
+}
+
+@keyframes bodyBob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(-4px); }
+}
+
+@keyframes legSwingL {
+    0%,100% { transform: rotate(-18deg); }
+    50%      { transform: rotate(18deg); }
+}
+
+@keyframes legSwingR {
+    0%,100% { transform: rotate(18deg); }
+    50%      { transform: rotate(-18deg); }
+}
+
+@keyframes armSwingL {
+    0%,100% { transform: rotate(-22deg); }
+    50%      { transform: rotate(22deg); }
+}
+
+@keyframes armSwingR {
+    0%,100% { transform: rotate(22deg); }
+    50%      { transform: rotate(-22deg); }
+}
+
+/* Talking — head nod + mouth open */
+.anim-talking .c-character {
+    animation: headNod 0.8s infinite ease-in-out;
+}
+
+.anim-talking .c-mouth {
+    border-radius: 0 0 10px 10px;
+    height: 14px;
+    animation: mouthTalk 0.4s infinite ease-in-out;
+}
+
+@keyframes headNod {
+    0%,100% { transform: translateX(-50%) rotate(0deg); }
+    50%      { transform: translateX(-50%) rotate(3deg); }
+}
+
+@keyframes mouthTalk {
+    0%,100% { height: 8px; }
+    50%      { height: 14px; }
+}
+
+/* Typing — upper body lean + arm movement */
+.anim-typing .c-character {
+    animation: typePosture 1.2s infinite ease-in-out;
+}
+
+.anim-typing .c-arm.c-left-arm {
+    animation: armType 0.3s infinite ease-in-out;
+}
+
+.anim-typing .c-arm.c-right-arm {
+    animation: armTypeAlt 0.3s infinite ease-in-out;
+}
+
+@keyframes typePosture {
+    0%,100% { transform: translateX(-50%) rotate(0deg); }
+    50%      { transform: translateX(-50%) rotate(-2deg); }
+}
+
+@keyframes armType {
+    0%,100% { transform: rotate(-30deg); }
+    50%      { transform: rotate(-15deg); }
+}
+
+@keyframes armTypeAlt {
+    0%,100% { transform: rotate(15deg); }
+    50%      { transform: rotate(30deg); }
+}
+
+/* Looking — head scan left/right */
+.anim-looking .c-head {
+    animation: lookAround 1.5s infinite ease-in-out;
+}
+
+.anim-looking .c-eyebrow.c-left {
+    animation: eyebrowWorry 1.5s infinite ease-in-out;
+}
+
+.anim-looking .c-eyebrow.c-right {
+    animation: eyebrowWorryR 1.5s infinite ease-in-out;
+}
+
+@keyframes lookAround {
+    0%,100% { transform: rotate(-8deg); }
+    50%      { transform: rotate(8deg); }
+}
+
+@keyframes eyebrowWorry {
+    0%,100% { transform: rotate(8deg) translateY(0); }
+    50%      { transform: rotate(20deg) translateY(-3px); }
+}
+
+@keyframes eyebrowWorryR {
+    0%,100% { transform: rotate(-8deg) translateY(0); }
+    50%      { transform: rotate(-20deg) translateY(-3px); }
+}
+
+/* Waving */
+.anim-waving .c-arm.c-right-arm {
+    animation: wave 0.5s infinite ease-in-out;
+    transform-origin: top center;
+}
+
+@keyframes wave {
+    0%,100% { transform: rotate(-50deg); }
+    50%      { transform: rotate(-80deg); }
+}
+
+/* Pointing */
+.anim-pointing .c-arm.c-right-arm {
+    transform: rotate(-70deg);
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* Sitting */
+.anim-sitting .c-character {
+    transform: translateX(-50%) scaleY(0.8);
+    transform-origin: bottom center;
+}
+
+.anim-sitting .c-leg {
+    transform: rotate(80deg);
+    transform-origin: top center;
+}

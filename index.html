@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Simulator | Chaudhary Health Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/characters.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <!-- Audio -->
+    <audio id="audio-1"  src="audio/scene1.mp3"></audio>
+    <audio id="audio-2"  src="audio/scene2.mp3"></audio>
+    <audio id="audio-3"  src="audio/scene3.mp3"></audio>
+    <audio id="audio-4"  src="audio/scene4.mp3"></audio>
+    <audio id="audio-5"  src="audio/scene5.mp3"></audio>
+    <audio id="audio-6"  src="audio/scene6.mp3"></audio>
+    <audio id="audio-7"  src="audio/scene7.mp3"></audio>
+    <audio id="audio-8"  src="audio/scene8.mp3"></audio>
+    <audio id="audio-9"  src="audio/scene9.mp3"></audio>
+    <audio id="audio-10" src="audio/scene10.mp3"></audio>
+    <audio id="audio-11" src="audio/scene11.mp3"></audio>
+    <audio id="audio-12" src="audio/scene12.mp3"></audio>
+    <audio id="audio-13" src="audio/scene13.mp3"></audio>
+    <audio id="audio-14" src="audio/scene14.mp3"></audio>
+
+    <!-- ═══════════════ START SCREEN ═══════════════ -->
+    <div id="start">
+        <div class="logo-box">
+            <img src="../hlogo-192.png" alt="Logo">
+        </div>
+        <h1 class="main-heading">CHAUDHARY HEALTH CARE</h1>
+        <p class="sub-heading">Hospital Management System &nbsp;·&nbsp; Simulator</p>
+        <button class="play-btn" onclick="startSim()">▶&nbsp; Start Experience</button>
+    </div>
+
+    <div id="canvas">
+
+        <!-- ═══════════ SCENE 1: Normal Hospital Day ═══════════ -->
+        <div class="sc" id="s1">
+            <div class="title-main fade-in-up" data-time="0.2">🏥 A Normal Hospital Day</div>
+            <div class="typewriter" data-time="0.8">"Subah hospital khulta hai... sab kuch theek lagta hai"</div>
+            <div class="css-scene wide-scene" id="stage-s1"></div>
+            <div class="status-tag bg-green fade-in-up action-shake" data-time="7.0" data-time-shake="7.3">✓ EVERYTHING SEEMS NORMAL</div>
+        </div>
+
+        <!-- ═══════════ SCENE 2: Scattered Information ═══════════ -->
+        <div class="sc" id="s2">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">⚠️ Scattered Information</div>
+            <div class="typewriter" data-time="0.6">"Patient ek, information kai jagah..."</div>
+            <div class="css-scene wide-scene" id="stage-s2"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 3: Finding History ═══════════ -->
+        <div class="sc" id="s3">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">🔍 Finding Old Records</div>
+            <div class="typewriter" data-time="0.5">"Purana record dhundna mushkil ho jaata hai..."</div>
+            <div class="css-scene wide-scene" id="stage-s3"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 4: Emergency Chaos ═══════════ -->
+        <div class="sc" id="s4">
+            <div class="title-main fade-in-up problem-title" data-time="0.2" style="background:linear-gradient(135deg,#ef4444,#dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🚨 Emergency Chaos</div>
+            <div class="typewriter" data-time="0.5">"Ambulance aayee... bed available nahi?"</div>
+            <div class="css-scene wide-scene" id="stage-s4"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 5: Paper Vitals ═══════════ -->
+        <div class="sc" id="s5">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">📋 Paper Vitals Problem</div>
+            <div class="typewriter" data-time="0.5">"Vitals paper pe... kal ka record kahan?"</div>
+            <div class="css-scene wide-scene" id="stage-s5"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 6: Billing Delay ═══════════ -->
+        <div class="sc" id="s6">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">💸 Billing Takes Hours</div>
+            <div class="typewriter" data-time="0.5">"Discharge ready... billing mein ghante lag jaate hain"</div>
+            <div class="css-scene wide-scene" id="stage-s6"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 7: No Access Control ═══════════ -->
+        <div class="sc" id="s7">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">🔓 No Access Control</div>
+            <div class="typewriter" data-time="0.5">"Koi bhi kisi ka bhi data dekh sakta hai..."</div>
+            <div class="css-scene wide-scene" id="stage-s7"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 8: Communication Gap ═══════════ -->
+        <div class="sc" id="s8">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">📡 Communication Gap</div>
+            <div class="typewriter" data-time="0.5">"Doctor ne instructions diye... nurse tak late pahunche"</div>
+            <div class="css-scene wide-scene" id="stage-s8"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 9: Admin Blind ═══════════ -->
+        <div class="sc" id="s9">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">📊 Admin in the Dark</div>
+            <div class="typewriter" data-time="0.5">"Sahi data nahi... management ke decisions galat"</div>
+            <div class="css-scene wide-scene" id="stage-s9"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 10: Problem Summary ═══════════ -->
+        <div class="sc" id="s10">
+            <div class="title-main fade-in-up problem-title" data-time="0.2">❌ The Core Problem</div>
+            <div class="typewriter" data-time="0.5">"Har department alag... information delay ho rahi hai"</div>
+            <div class="css-scene wide-scene" id="stage-s10"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 11: Transformation ═══════════ -->
+        <div class="sc" id="s11">
+            <div class="title-main fade-in-up solution-title" data-time="0.2">⚡ The Transformation</div>
+            <div class="typewriter" data-time="0.6">"Toh humne socha — kyon na sab kuch ek jagah laaya jaye?"</div>
+            <div class="css-scene wide-scene" id="stage-s11"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 12: Digital Workflow ═══════════ -->
+        <div class="sc" id="s12">
+            <div class="title-main fade-in-up solution-title" data-time="0.2">🔗 Digital Workflow</div>
+            <div class="typewriter" data-time="0.5">"Patient aaya... ek system, sab connected"</div>
+            <div class="css-scene wide-scene" id="stage-s12"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 13: Role-Based Access ═══════════ -->
+        <div class="sc" id="s13">
+            <div class="title-main fade-in-up solution-title" data-time="0.2">🔐 Role-Based Access</div>
+            <div class="typewriter" data-time="0.5">"Har koi sirf wohi dekhe jo uske liye hai"</div>
+            <div class="css-scene wide-scene" id="stage-s13"></div>
+        </div>
+
+        <!-- ═══════════ SCENE 14: Grand Finale ═══════════ -->
+        <div class="sc" id="s14">
+            <div class="title-main fade-in-up solution-title" data-time="0.2" style="background:linear-gradient(135deg,#10b981,#06b6d4,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:clamp(28px,4vw,60px);">🏆 Fully Connected Hospital</div>
+            <div class="typewriter" data-time="0.5">"Yahi hai — Chaudhary Health Care Hospital Management System"</div>
+            <div class="css-scene wide-scene" id="stage-s14"></div>
+        </div>
+
+    </div><!-- end canvas -->
+
+    <!-- Navigation Overlay -->
+    <div id="nav-overlay" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,0.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:30px;padding:10px 20px;display:flex;gap:15px;align-items:center;z-index:9999;box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+        <button onclick="jumpToScene(currentScene - 1)" style="background:rgba(255,255,255,0.1);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;font-weight:bold;transition:0.3s;"><i class="fas fa-chevron-left"></i> Prev</button>
+        
+        <select id="scene-selector" onchange="jumpToScene(parseInt(this.value))" style="background:rgba(0,0,0,0.5);color:white;border:1px solid rgba(255,255,255,0.2);padding:8px 10px;border-radius:10px;outline:none;font-weight:bold;cursor:pointer;">
+            <option value="0">Scene 1</option>
+            <option value="1">Scene 2</option>
+            <option value="2">Scene 3</option>
+            <option value="3">Scene 4</option>
+            <option value="4">Scene 5</option>
+            <option value="5">Scene 6</option>
+            <option value="6">Scene 7</option>
+            <option value="7">Scene 8</option>
+            <option value="8">Scene 9</option>
+            <option value="9">Scene 10</option>
+            <option value="10">Scene 11</option>
+            <option value="11">Scene 12</option>
+            <option value="12">Scene 13</option>
+            <option value="13">Scene 14</option>
+        </select>
+
+        <button onclick="jumpToScene(currentScene + 1)" style="background:rgba(255,255,255,0.1);border:none;color:white;padding:8px 15px;border-radius:20px;cursor:pointer;font-weight:bold;transition:0.3s;">Next <i class="fas fa-chevron-right"></i></button>
+        <button onclick="jumpToScene(0)" style="background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.5);color:#fca5a5;padding:8px 15px;border-radius:20px;cursor:pointer;font-weight:bold;margin-left:10px;"><i class="fas fa-redo"></i> Restart</button>
+    </div>
+
+    <script src="js/characterAnimations.js?v=2"></script>
+    <script src="js/sceneController.js?v=5"></script>
+    <script src="script.js?v=4"></script>
+</body>
+</html>
